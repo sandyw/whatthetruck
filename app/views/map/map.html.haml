@@ -1,11 +1,4 @@
-#map
+%script{ type: 'text/x-handlebars' }
+  {{ outlet }}
 
-:javascript
-  function initialize() {
-    var mapOptions = {
-      center: new google.maps.LatLng(30.3369, -81.6614),
-        zoom: 8
-    };
-    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-  }
-  google.maps.event.addDomListener(window, 'load', initialize);
+#map

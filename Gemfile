@@ -15,6 +15,7 @@ gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
+gem 'ember-rails'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -22,13 +23,18 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+# Use haml for html templates
+gem 'haml-rails'
+
+gem 'pry'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-gem 'haml'
+gem 'rspec-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -48,9 +54,10 @@ end
 # gem 'debugger', group: [:development, :test]
 
 group :test do
+  gem 'assert_json'
   gem 'cucumber-rails', :require => false
+  gem 'factory_girl_rails'
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
-  gem 'rspec'
   gem 'selenium-webdriver'
 end
