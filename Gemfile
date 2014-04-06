@@ -25,6 +25,7 @@ gem 'jquery-rails'
 
 # Use haml for html templates
 gem 'haml-rails'
+gem 'emblem-rails'
 
 gem 'pry'
 
