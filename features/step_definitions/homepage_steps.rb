@@ -1,5 +1,5 @@
 Given(/^that Baby's Badass Burgers is out in Jacksonville today$/) do
-  Truck.create! name: "Baby's Badass Burgers"
+  FactoryGirl.create(:truck, name: "Baby's Badass Burgers")
 end
 
 When(/^I go to jaxtrucks\.com$/) do

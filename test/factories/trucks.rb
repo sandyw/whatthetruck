@@ -3,5 +3,8 @@
 FactoryGirl.define do
   factory :truck do
     name "MyString"
+    address "MyString"
+    latitude 0.0
+    longitude 0.0
   end
 end

@@ -28,16 +28,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     arel (4.0.2)
-    assert_json (0.2.0)
-      activesupport
     atomic (1.1.16)
-    barber (0.4.2)
-      ember-source
-      execjs
-      handlebars-source
-    barber-emblem (0.1.1)
-      barber (>= 0.4.1)
-      emblem-source
     bootstrap-sass (3.1.1.0)
       sass (~> 3.2)
     builder (3.1.4)
@@ -70,23 +61,6 @@ GEM
       rails (>= 3.0.0)
     database_cleaner (1.2.0)
     diff-lcs (1.2.5)
-    ember-data-source (0.14)
-      ember-source
-    ember-rails (0.14.1)
-      active_model_serializers
-      barber (>= 0.4.1)
-      ember-data-source
-      ember-source
-      execjs (>= 1.2)
-      handlebars-source
-      jquery-rails (>= 1.0.17)
-      railties (>= 3.1)
-    ember-source (1.5.0)
-      handlebars-source (~> 1.0)
-    emblem-rails (0.2.1)
-      barber-emblem (~> 0.1.1)
-      ember-rails (>= 0.14.0)
-    emblem-source (0.3.13)
     erubis (2.7.0)
     execjs (2.0.2)
     factory_girl (4.4.0)
@@ -95,6 +69,7 @@ GEM
       factory_girl (~> 4.4.0)
       railties (>= 3.0.0)
     ffi (1.9.3)
+    geocoder (1.1.9)
     gherkin (2.12.2)
       multi_json (~> 1.3)
     haml (4.0.5)
@@ -104,12 +79,8 @@ GEM
       activesupport (>= 4.0.1)
       haml (>= 3.1, < 5.0)
       railties (>= 4.0.1)
-    handlebars-source (1.3.0)
     hike (1.2.3)
     i18n (0.6.9)
-    jbuilder (1.5.3)
-      activesupport (>= 3.0.0)
-      multi_json (>= 1.2.0)
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -147,8 +118,6 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.2.2)
-    rdoc (4.1.1)
-      json (~> 1.4)
     rspec-core (2.14.8)
     rspec-expectations (2.14.5)
       diff-lcs (>= 1.1.3, < 2.0)
@@ -168,14 +137,13 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0.0)
-    sdoc (0.4.0)
-      json (~> 1.8)
-      rdoc (~> 4.0, < 5.0)
     selenium-webdriver (2.41.0)
       childprocess (>= 0.5.0)
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0.4)
+    shoulda-matchers (2.5.0)
+      activesupport (>= 3.0.0)
     slop (3.5.0)
     sprockets (2.11.0)
       hike (~> 1.2)
@@ -194,8 +162,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.2.1)
-      coffee-rails
     tzinfo (0.3.39)
     uglifier (2.5.0)
       execjs (>= 0.3.0)
@@ -208,23 +174,20 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  assert_json
+  active_model_serializers
   bootstrap-sass (~> 3.1.1)
   coffee-rails (~> 4.0.0)
   cucumber-rails
   database_cleaner
-  ember-rails
-  emblem-rails
   factory_girl_rails
+  geocoder
   haml-rails
-  jbuilder (~> 1.2)
   jquery-rails
   pry
   rails (= 4.0.4)
   rspec-rails
   sass-rails (~> 4.0.2)
-  sdoc
   selenium-webdriver
+  shoulda-matchers
   sqlite3
-  turbolinks
   uglifier (>= 1.3.0)

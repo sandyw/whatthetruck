@@ -1,0 +1,6 @@
+#map
+#trucklist
+  %ul#list
+  :coffeescript
+    app.trucks = new app.TruckList()
+    app.trucks.reset #{@trucks.to_json}

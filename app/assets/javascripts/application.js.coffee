@@ -1,10 +1,5 @@
 #= require jquery
-#= require handlebars
-#= require ember
-#= require ember-data
+#= require underscore
+#= require backbone
 #= require_self
-#= require whatthetruck
-
-# for more details see: http://emberjs.com/guides/application/
-window.Whatthetruck = Ember.Application.create()
-
+#= require_tree .
