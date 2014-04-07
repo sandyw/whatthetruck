@@ -10,6 +10,8 @@ Then(/^I should see the map of Jacksonville$/) do
   expect(page).to have_content "Google"
 end
 
-Then(/^there should be a pin on the map at that truck's location$/) do
-  expect(page).to have_content "Baby's Badass Burgers"
+Then(/^I should see that truck in the list of trucks/) do
+  within "#list" do
+    expect(page).to have_content "Baby's Badass Burgers"
+  end
 end
