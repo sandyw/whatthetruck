@@ -15,3 +15,7 @@ Then(/^I should see that truck in the list of trucks/) do
     expect(page).to have_content "Baby's Badass Burgers"
   end
 end
+
+Then(/^I should see a message saying "(.*?)"$/) do |message|
+  page.should have_content message
+end

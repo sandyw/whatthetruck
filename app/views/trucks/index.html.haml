@@ -2,7 +2,11 @@
   #map.span9
   #trucklist.span3
     = image_tag 'JaxTrucks.png', id: 'logo'
-    #list.list-group
-    :coffeescript
-      app.trucks = new app.TruckList()
-      app.trucks.reset #{@trucks.to_json}
+    - if @trucks.present?
+      %h4 Trucks out right now:
+      #list.list-group
+        :coffeescript
+          app.trucks = new app.TruckList()
+          app.trucks.reset #{@trucks.to_json}
+    - else
+      %h4 There are no trucks out right now. :(
