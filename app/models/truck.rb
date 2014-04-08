@@ -1,5 +1,5 @@
 class Truck < ActiveRecord::Base
-  validates :name, :latitude, :longitude, :address, presence: true
+  validates :name, presence: true
 
   geocoded_by :address
 
