@@ -5,15 +5,26 @@ describe Truck do
 
   describe "#update_location" do
     let(:truck) { FactoryGirl.create(:truck) }
-    let(:address) { "1022 park st 32204" }
-
-    it "sets the truck's address and geocodes it" do
-      truck.update_location(address)
+    let(:user_address) { "1022 park st 32204" }
+    before do
+      truck.update_location(user_address)
       truck.reload
-      expect(truck.address).to eq(address)
+    end
+
+    it "sets the truck's user_address" do
+      expect(truck.user_address).to eq(user_address)
+    end
+
+    it "sets the truck's lat/long" do
       expect(truck.latitude).to eq(123.0)
       expect(truck.longitude).to eq(456.0)
     end
+
+    it "sets the truck's geocoded_address to the full address returned by google" do
+      expect(truck.geocoded_address).to eq("1022 Park St., Jacksonville, FL, 32204, USA")
+    end
+  end
+
   describe "::current" do
     it "returns trucks which have a latitude and longitude set" do
       @current_trucks  = 2.times.collect { FactoryGirl.create(:current_truck) }
