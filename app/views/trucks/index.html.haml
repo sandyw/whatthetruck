@@ -1,6 +1,8 @@
-#map
-#trucklist
-  %ul#list
-  :coffeescript
-    app.trucks = new app.TruckList()
-    app.trucks.reset #{@trucks.to_json}
+.row
+  #map.span9
+  #trucklist.span3
+    = image_tag 'JaxTrucks.png', id: 'logo'
+    #list.list-group
+    :coffeescript
+      app.trucks = new app.TruckList()
+      app.trucks.reset #{@trucks.to_json}

@@ -14,7 +14,7 @@ app.TruckList = Backbone.Collection.extend
 app.TruckListItemView = Backbone.View.extend
   tagName: 'li',
 
-  template: _.template "<li><%= name %></li>"
+  template: _.template "<a class='list-group-item'><h4 class='list-group-item-heading'><%= name %></h4></a>"
 
   render: ->
     @$el.html(@template(@model.toJSON()))
