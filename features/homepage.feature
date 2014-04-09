@@ -9,6 +9,7 @@ Feature: Homepage
     When I go to jaxtrucks.com
     Then I should see the map of Jacksonville
     And I should see that truck in the list of trucks
+    And I should see its full street address
 
   @javascript
   Scenario: Visit the home page when there are no trucks out

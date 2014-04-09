@@ -1,5 +1,10 @@
 Given(/^that Baby's Badass Burgers is out in Jacksonville today$/) do
-  FactoryGirl.create(:truck, name: "Baby's Badass Burgers")
+  truck = FactoryGirl.create(:truck, name: "Baby's Badass Burgers")
+  truck.update_location "1022 park st 32204"
+end
+
+Then(/^I should see its full street address$/) do
+  page.should have_content "1022 Park St., Jacksonville, FL, 32204, USA"
 end
 
 When(/^I go to jaxtrucks\.com$/) do
