@@ -4,18 +4,15 @@ app.Truck = Backbone.Model.extend
   defaults:
     id: '',
     name: '',
-    latitude: '',
-    longitude: ''
 
 app.TruckList = Backbone.Collection.extend
-  model: app.Truck,
-  url: '/api/v1/trucks'
+  model: app.Truck
 
 app.TruckListItemView = Backbone.View.extend
   tagName: "a",
   className: "list-group-item",
 
-  template: _.template "<h4 class='list-group-item-heading'><%= name %></h4><p class='list-group-item-text'><%= geocoded_address %></p>"
+  template: JST['trucks/list_item_view']
 
   render: ->
     @$el.html(@template(@model.toJSON()))
@@ -29,18 +26,21 @@ app.TruckMapPinView = Backbone.View.extend
       title: @model.get("name")
 
 app.TruckListView = Backbone.View.extend
-  el: '#list'
-
   initialize: ->
     @addAll()
 
   addAll: ->
-    app.trucks.each (truck) =>
+    @model.each (truck) =>
       view = new app.TruckListItemView(model: truck)
       @$el.append(view.render().el)
-      new app.TruckMapPinView(model: truck).render()
+      if truck.get('latitude')? && truck.get('longitude')?
+        new app.TruckMapPinView(model: truck).render()
 
 $ ->
-  mapOptions = { center: new google.maps.LatLng(30.3369, -81.6614), zoom: 12 }
-  app.map = new google.maps.Map(document.getElementById("map"), mapOptions)
-  new app.TruckListView()
+  if google?
+    mapOptions = { center: new google.maps.LatLng(30.3369, -81.6614), zoom: 12 }
+    app.map = new google.maps.Map(document.getElementById("map"), mapOptions)
+    if app.trucks
+      new app.TruckListView(model: app.trucks, el: "#list")
+    if app.upcomingTrucks
+      new app.TruckListView(model: app.upcomingTrucks, el: "#upcoming")
