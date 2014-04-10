@@ -1,9 +1,17 @@
+def stubbed_user_address
+  "1022 park st 32204"
+end
+
+def geocoded_address
+  '1022 Park St., Jacksonville, FL, 32204, USA'
+end
+
 Geocoder::Lookup::Test.add_stub(
-  "1022 park st 32204", [
+  stubbed_user_address, [
     {
       'latitude'     => 123.0,
       'longitude'    => 456.0,
-      'address'      => '1022 Park St., Jacksonville, FL, 32204, USA',
+      'address'      => geocoded_address,
       'state'        => 'Florida',
       'state_code'   => 'FL',
       'country'      => 'United States',

@@ -2,11 +2,18 @@
   #map.span9
   #trucklist.span3
     = image_tag 'JaxTrucks.png', id: 'logo'
-    - if @trucks.present?
+    - if trucks_out_right_now?
       %h4 Trucks out right now:
       #list.list-group
         :coffeescript
           app.trucks = new app.TruckList()
-          app.trucks.reset #{@trucks.to_json}
+          app.trucks.reset #{current_trucks}
     - else
       %h4 There are no trucks out right now. :(
+
+    - if trucks_coming_up?
+      %h4 Later:
+      #upcoming.list-group
+        :coffeescript
+          app.upcomingTrucks = new app.TruckList()
+          app.upcomingTrucks.reset #{upcoming_trucks}

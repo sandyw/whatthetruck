@@ -41,3 +41,7 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+def serialize_trucks(trucks)
+  ActiveModel::ArraySerializer.new(trucks, each_serializer: TruckSerializer).to_json
+end

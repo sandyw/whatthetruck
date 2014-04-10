@@ -11,16 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140408231434) do
+ActiveRecord::Schema.define(version: 20140409234709) do
+
+  create_table "locations", force: true do |t|
+    t.integer  "truck_id",         null: false
+    t.float    "latitude",         null: false
+    t.float    "longitude",        null: false
+    t.string   "user_address",     null: false
+    t.string   "geocoded_address", null: false
+    t.datetime "from",             null: false
+    t.datetime "to",               null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "trucks", force: true do |t|
     t.string   "name"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.string   "user_address"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "geocoded_address"
   end
 
 end

@@ -16,3 +16,16 @@ Feature: Homepage
     When I go to jaxtrucks.com
     Then I should see the map of Jacksonville
     And I should see a message saying "There are no trucks out right now. :("
+
+  @javascript
+  @wip
+  Scenario: View trucks out later today
+    Given that it is 1pm
+    And that Chew Chew will be at 400 Bay St from 4pm-2am today
+    When I go to jaxtrucks.com
+    Then I should see a message saying "There are no trucks out right now. :("
+    And I should see that Chew Chew will be out from 4pm-2am today
+
+  Scenario: View trucks out tomorrow
+
+  Scenario: View trucks out tomorrow night

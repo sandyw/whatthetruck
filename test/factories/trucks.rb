@@ -2,21 +2,24 @@
 
 FactoryGirl.define do
   factory :truck do
-    name "MyString"
-    user_address "MyString"
-    latitude 0.0
-    longitude 0.0
+    name Faker::Company.name
   end
 
   factory :current_truck, parent: :truck do
-    user_address "1022 park st 32204"
-    latitude 123.0
-    longitude 456.0
+    after(:create) do |truck, evaluator|
+      create_list(:current_location, 1, truck: truck)
+    end
   end
 
   factory :inactive_truck, parent: :truck do
-    user_address nil
-    latitude nil
-    longitude nil
+    after(:create) do |truck, evaluator|
+      create_list(:inactive_location, 1, truck: truck)
+    end
+  end
+
+  factory :upcoming_truck, parent: :truck do
+    after(:create) do |truck, evaluator|
+      create_list(:future_location, 1, truck: truck)
+    end
   end
 end

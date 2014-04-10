@@ -1,19 +1,18 @@
 class Truck < ActiveRecord::Base
   validates :name, presence: true
+  has_many :locations, dependent: :destroy
 
-  geocoded_by :user_address do |truck, results|
-    if result = results.first
-      truck.geocoded_address = results.first.address
-      truck.latitude = result.latitude
-      truck.longitude = result.longitude
-    end
+  delegate :latitude, :longitude, :geocoded_address, to: :current_location, allow_nil: true
+
+  scope :current, -> { joins(:locations).merge(Location.current) }
+  scope :upcoming, -> { joins(:locations).merge(Location.upcoming) }
+
+  def current_location
+    locations.current.first
   end
 
-  scope :current, -> { where.not(latitude: nil, longitude: nil) }
-
-  def update_location(user_address)
-    self.user_address = user_address
-    geocode
-    save!
+  def add_location!(address: nil, from: nil, to: nil)
+    location = locations.build user_address: address, from: from, to: to
+    location.geocode!
   end
 end
