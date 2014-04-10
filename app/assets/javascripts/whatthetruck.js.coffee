@@ -12,8 +12,8 @@ app.TruckList = Backbone.Collection.extend
   url: '/api/v1/trucks'
 
 app.TruckListItemView = Backbone.View.extend
-  tagName: 'a',
-  className: 'list-group-item',
+  tagName: "a",
+  className: "list-group-item",
 
   template: _.template "<h4 class='list-group-item-heading'><%= name %></h4><p class='list-group-item-text'><%= geocoded_address %></p>"
 
@@ -24,10 +24,9 @@ app.TruckListItemView = Backbone.View.extend
 app.TruckMapPinView = Backbone.View.extend
   render: ->
     marker = new google.maps.Marker
-      position: new google.maps.LatLng(@model.get('latitude'), @model.get('longitude')),
+      position: new google.maps.LatLng(@model.get("latitude"), @model.get("longitude")),
       map: app.map,
-      title: @model.get('name')
-
+      title: @model.get("name")
 
 app.TruckListView = Backbone.View.extend
   el: '#list'
