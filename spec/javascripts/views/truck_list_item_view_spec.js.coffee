@@ -18,4 +18,3 @@ describe "TruckListItemView", ->
       expect($('#list').text()).toContain("Truckee")
       expect($('#list').text()).toContain("1 Laurel Street")
       expect($('#list').text()).toContain("9am-5pm")
-

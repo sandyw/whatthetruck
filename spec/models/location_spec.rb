@@ -48,4 +48,18 @@ describe Location do
       expect(location.geocoded_address).to eq(geocoded_address)
     end
   end
+
+  describe "#hours" do
+    it "is the hours of operation" do
+      @location = Location.new from: 1.hour.ago, to: 2.hours.from_now
+      time = "#{@location.from.strftime("%l%P")}-#{@location.to.strftime("%l%P")}"
+
+      expect(@location.hours).to eq(time)
+    end
+
+    it "is blank if I have no hours" do
+      @location = Location.new
+      expect(@location.hours).to eq("")
+    end
+  end
 end

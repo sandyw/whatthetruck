@@ -11,11 +11,25 @@ class Location < ActiveRecord::Base
     end
   end
 
-  scope :current, -> { where('`locations`.`from` <= ? AND `locations`.`to` >= ?', Time.zone.now, Time.zone.now) }
-  scope :upcoming, -> { where('`locations`.`from` >= ? AND `locations`.`from` <= ?', Time.zone.now, Time.zone.now + 6.hours) }
+  scope :current, -> { where('`locations`.`from` <= ? AND `locations`.`to` >= ?', Time.now, Time.now) }
+  scope :upcoming, -> { where('`locations`.`from` >= ? AND `locations`.`from` <= ?', Time.now, Time.now + 6.hours) }
 
   def geocode!
     geocode
     save!
+  end
+
+  def hours
+    if hours?
+      "#{from.strftime("%l%P")}-#{to.strftime("%l%P")}"
+    else
+      ""
+    end
+  end
+
+  private
+
+  def hours?
+    from && to
   end
 end
