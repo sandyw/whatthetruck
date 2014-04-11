@@ -23,6 +23,7 @@ app.TruckMapPinView = Backbone.View.extend
     marker = new google.maps.Marker
       position: new google.maps.LatLng(@model.get("latitude"), @model.get("longitude")),
       map: app.map,
+      icon: 'assets/pin_active.png'
       title: @model.get("name")
 
 app.TruckListView = Backbone.View.extend
