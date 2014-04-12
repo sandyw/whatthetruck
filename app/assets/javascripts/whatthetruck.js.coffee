@@ -8,14 +8,17 @@ app.Truck = Backbone.Model.extend
 app.TruckList = Backbone.Collection.extend
   model: app.Truck
 
-app.TruckListItemView = Backbone.View.extend
-  tagName: "a",
+app.TruckView = Backbone.View.extend
+  tagName: "div",
   className: "list-group-item",
 
   template: JST['trucks/list_item_view']
 
   render: ->
     @$el.html(@template(@model.toJSON()))
+    #@marker = new google.maps.Marker
+    #  position: new google.maps.LatLng(@model.get("latitude"), @model.get("longitude"))
+
     @
 
 app.TruckMapPinView = Backbone.View.extend
@@ -32,7 +35,7 @@ app.TruckListView = Backbone.View.extend
 
   addAll: ->
     @model.each (truck) =>
-      view = new app.TruckListItemView(model: truck)
+      view = new app.TruckView(model: truck)
       @$el.append(view.render().el)
       if truck.get('latitude')? && truck.get('longitude')?
         new app.TruckMapPinView(model: truck).render()

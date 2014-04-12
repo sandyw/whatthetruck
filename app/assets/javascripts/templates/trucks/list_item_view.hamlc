@@ -1,5 +1,6 @@
-%h4.list-group-item-heading
-  = @name
-%p.list-group-item-text
-  = @geocoded_address
-  = @hours
+%a{href: '#'}
+  %h4.list-group-item-heading
+    = @name
+  %p.list-group-item-text
+    = @geocoded_address
+    = @hours

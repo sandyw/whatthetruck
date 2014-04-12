@@ -10,6 +10,8 @@ Feature: Homepage
     Then I should see the map of Jacksonville
     And I should see that truck in the list of trucks
     And I should see its full street address
+    #When I click on the truck's name in the list
+    #Then an info window should pop up in the map
 
   @javascript
   Scenario: Visit the home page when there are no trucks out
@@ -18,10 +20,9 @@ Feature: Homepage
     And I should see a message saying "There are no trucks out right now. :("
 
   @javascript
-  @wip
   Scenario: View trucks out later today
     Given that it is 1pm
-    And that Chew Chew will be at 400 Bay St from 4pm-2am today
+    And that Chew Chew will be at 500 Bay St from 4pm-2am today
     When I go to jaxtrucks.com
     Then I should see a message saying "There are no trucks out right now. :("
     And I should see that Chew Chew will be out from 4pm-2am today

@@ -29,20 +29,31 @@ Given(/^that it is (\d+)pm$/) do |hour|
   Timecop.travel( Time.zone.now.midnight + (12 + hour.to_i).hours )
 end
 
-Given(/^that Chew Chew will be at 400 Bay St from 4pm\-2am today$/) do
+Given(/^that Chew Chew will be at (.+) from 4pm\-2am today$/) do |address|
   truck = FactoryGirl.create :truck, name: "Chew Chew"
   midnight = Time.zone.now.midnight
   four = midnight + (12 + 4).hours
   two = midnight + (24 + 2).hours
-  truck.locations.create! user_address: "400 Bay St", geocoded_address: "400 Bay St", from: four, to: two, latitude: 123.0, longitude: 456.0
+  truck.locations.create! user_address: address, from: four, to: two
 end
 
 Then(/^I should see that Chew Chew will be out from 4pm\-2am today$/) do
   page.should have_content "Later"
-  within "a.list-group-item" do
+  within ".list-group-item" do
     page.should have_content "Chew Chew"
     page.should have_content "4pm"
     page.should have_content "2am"
-    page.should have_content "400 Bay St"
+    page.should have_content "500 Bay St"
+  end
+end
+
+When(/^I click on the truck's name in the list$/) do
+  page.find('#list').click_link "Baby's Badass Burgers"
+end
+
+Then(/^an info window should pop up in the map$/) do
+  within "#map" do
+    page.should have_content "Baby's Badass Burgers"
+    page.should have_content "1022 Park St., Jacksonville, FL, 32204, USA"
   end
 end
