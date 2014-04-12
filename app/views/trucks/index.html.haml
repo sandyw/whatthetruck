@@ -6,8 +6,10 @@
       %h4 Trucks out right now:
       #list.list-group
         :coffeescript
-          app.trucks = new app.TruckList()
-          app.trucks.reset #{current_trucks}
+          require ['collections/truck_list'], (TruckList) ->
+            window.app ?= {}
+            app.trucks = new TruckList()
+            app.trucks.reset #{current_trucks}
     - else
       %h4 There are no trucks out right now. :(
 
@@ -15,5 +17,7 @@
       %h4 Later:
       #upcoming.list-group
         :coffeescript
-          app.upcomingTrucks = new app.TruckList()
-          app.upcomingTrucks.reset #{upcoming_trucks}
+          require ['collections/truck_list'], (TruckList) ->
+            window.app ?= {}
+            app.upcomingTrucks = new TruckList()
+            app.upcomingTrucks.reset #{upcoming_trucks}
