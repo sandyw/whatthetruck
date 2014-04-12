@@ -20,3 +20,16 @@ Geocoder::Lookup::Test.add_stub(
   ]
 )
 
+Geocoder::Lookup::Test.add_stub(
+  "500 Bay St", [
+    {
+      'latitude'     => 123.0,
+      'longitude'    => 456.0,
+      'address'      => "500 Bay St",
+      'state'        => 'Florida',
+      'state_code'   => 'FL',
+      'country'      => 'United States',
+      'country_code' => 'US'
+    }
+  ]
+)

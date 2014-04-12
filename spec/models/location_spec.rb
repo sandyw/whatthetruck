@@ -49,6 +49,15 @@ describe Location do
     end
   end
 
+  describe "callbacks" do
+    let(:location) { FactoryGirl.create(:location, latitude: 0.0, longitude: 0.0, geocoded_address: 'blah') }
+
+    it "geocodes the truck on validation" do
+      expect(location).to receive(:geocode).once
+      location.valid?
+    end
+  end
+
   describe "#hours" do
     it "is the hours of operation" do
       @location = Location.new from: 1.hour.ago, to: 2.hours.from_now

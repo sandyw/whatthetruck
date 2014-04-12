@@ -1,6 +1,8 @@
 class Location < ActiveRecord::Base
   belongs_to :truck
 
+  before_validation :geocode
+
   validates :truck, :latitude, :longitude, :user_address, :geocoded_address, :from, :to, presence: true
 
   geocoded_by :user_address do |location, results|
