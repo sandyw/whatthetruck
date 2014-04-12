@@ -11,5 +11,5 @@
  *= require_self
  *= require bootstrap.min
  *= require variables
- *= require_tree .
+ *= require map
  */

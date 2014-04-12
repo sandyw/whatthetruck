@@ -5,6 +5,8 @@ gem 'rails', '4.0.4'
 # Storage
 gem 'sqlite3'
 
+gem 'activeadmin', github: 'gregbell/active_admin'
+
 # Assets
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'coffee-rails', '~> 4.0.0'
