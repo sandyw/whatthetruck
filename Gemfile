@@ -30,7 +30,7 @@ gem "active_model_serializers"
 # Testing
 # include rspec-rails in development so that generators create rspec files
 gem 'rspec-rails'
-gem 'teaspoon'
+gem 'teaspoon', github: 'modeset/teaspoon'
 gem 'jasmine-jquery-rails', '1.5.9'
 
 group :test do
